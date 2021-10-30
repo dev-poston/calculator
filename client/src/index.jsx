@@ -10,10 +10,10 @@ class App extends React.Component {
     this.state = {
       solution: ''
     };
-    this.calculate = this.calculate.bind(this);
+    this.calculator = this.calculator.bind(this);
   };
 
-  calculate(input) {
+  calculator(input) {
     helper.math(input, (data) => {
       console.log('data: ', data);
     });
@@ -23,7 +23,7 @@ class App extends React.Component {
     return(
       <div>
         <h1 className='title'>Super Math Calculator 5000</h1>
-        <InputField calculate={this.calculate}/>
+        <InputField calculator={this.calculator}/>
       </div>
     );
   };

@@ -18,7 +18,7 @@ class InputField extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.calculate(this.state.input)
+    this.props.calculator(this.state.input)
   };
 
   render() {

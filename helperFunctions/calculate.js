@@ -4,22 +4,26 @@ module.exports = {
   math: (string, callback) => {
     string = string.replace(/\s/g, ''); //santize string
 
-    const calculate = (str) => {
-      console.log('NEW STR: ', str);
-      if (!str.includes('(') &&
-          !str.includes(')') &&
-          !str.includes('/') &&
-          !str.includes('*') &&
-          !str.includes('+') &&
-          !str.includes('-')) {
-        callback(str);
-      }
-      solve(str, (res) => {
+    // const calculate = (str) => {
+    //   console.log('CAL NEW STR: ', str);
+    //   //change for neg int solution
+    //   if (!str.includes('(') &&
+    //       !str.includes(')') &&
+    //       !str.includes('/') &&
+    //       !str.includes('*') &&
+    //       !str.includes('+') &&
+    //       !str.includes('-')) {
+    //     callback(str);
+    //     return;
+    //   } else {
+    //   }
+      solve(string, (res) => {
         console.log('RES', res);
-        calculate(res);
+        callback(res);
+        // calculate(res);
       });
-    }
-    calculate(string);
+    // }
+    // calculate(string);
   }
 };
 

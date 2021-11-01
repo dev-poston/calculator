@@ -1,6 +1,6 @@
 module.exports = {
   quickMaths: (a, op, b, callback) => {
-    //need to find neg int and num longer than 1 digit
+    console.log('A: ', a, 'OP: ', op, 'B: ', b);
     if (op === '+') {
       callback(Number(a) + Number(b));
     }

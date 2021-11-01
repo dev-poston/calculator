@@ -1,4 +1,3 @@
-const quickMaths = require('./math.js').quickMaths;
 const findNums = require('./findNums.js').nums;
 
 module.exports = {
@@ -6,36 +5,57 @@ module.exports = {
     console.log('SOLVE:', str);
 
     let dissect = (s) => {
+      // if parens have been solved - remove parens
+      let firstHalf;
+      let secHalf;
+
+      if (Number(s)) {
+        console.log('SOLVED!!!');
+        callback(s);
+        return;
+      }
+
       for (let i = 0; i < s.length; i++) {
-        // SOLVE PARENS FIRST
         if (s.includes('(')) {
           console.log('PAREN: ', s);
-          //EXTRACT THE CONTENTS OF PARENS
-          let firstHalf = s.slice(0, s.indexOf('('));
+          firstHalf = s.slice(0, s.indexOf('('));
           for (var j = s.length - 1; j >= 0; j--) {
             if (s[j] === ')') {
-              var secHalf = s.slice(s[j]);
+              secHalf = s.slice(j + 1);
               break;
             }
           }
           let parenSec = s.slice(s.indexOf('(') + 1, j);
-          console.log('SEC: ', parenSec);
+            console.log('FIRSTparenHALF: ', firstHalf);
+            console.log('parenSEC: ', parenSec);
+            console.log('SECparenHALF: ', secHalf);
           let solveParens = dissect(parenSec);
-          //callback(firstHalf + dissect(parenSec) + secHalf);
-          break;
-        } else if (s[i] === '/' || s[i] === '*') {
+          // console.log('EQ: ', firstHalf + solveParens + secHalf);
+          // callback(firstHalf + solveParens + secHalf);
+          // break;
+        } else if (s.includes('/') || s.includes('*')) {
           console.log('D or M', s);
-          break;
+          let divideOrMultiply;
+          if (s.includes('/')) {
+            divideOrMultiply = s.indexOf('/');
+          } else {
+            divideOrMultiply = s.indexOf('*');
+          }
+          console.log('index DorM: ', divideOrMultiply);
+          findNums(divideOrMultiply, s, (res) => {
+            console.log('fNUMS RES: ', res);
+            dissect(res);
+          });
+          // break;
         } else if (s[i - 1] && (s[i] === '-' || s[i] === '+')) {
           console.log('S or A:', s);
           findNums(i, s, (res) => {
-
-          })
-          break;
+            console.log('fNUMS RES: ', res);
+            dissect(res);
+          });
         }
       };
     };
     dissect(str);
-    // callback(str);
   }
 };

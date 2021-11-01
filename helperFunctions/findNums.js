@@ -2,11 +2,11 @@ const quickMaths = require('./math.js').quickMaths;
 
 module.exports = {
   nums: (op, string, callback) => {
-    console.log('OP: ', op, 'string: ', string);
+    console.log('OP: ', string[op], 'OP INDEX: ', op, 'string: ', string);
     let firstNum = [];
     let secNum = '';
     let operator = string[op];
-    for (let i = op + 1; i < string.length; i++) {
+    for (var i = op + 1; i < string.length; i++) {
       if (secNum.length >= 1 && string[i] === '-') {
         break;
       }
@@ -22,22 +22,35 @@ module.exports = {
 
     // if we hit a neg operator - and its followed by another operator - slice at neg operator
     // if we hit a neg operator and its follow by an int - slice at int
-    for (let j = op - 1; j >= 0; j--) {
-      // console.log('!!!', string[j])
+    // if we hit an int and the next item is an operator - slice at int
+    // if we hit an int and the next is undefined - unshift
+    for (var j = op - 1; j >= 0; j--) {
       if (string[j] === '-' &&
          (string[j-1] === '+' ||
           string[j-1] === '/' ||
           string[j-1] === '*' ||
           string[j-1] === '(')) {
+            firstNum.unshift(string[j]);
+            break;
+      } else if (string[j] === '-' && !isNaN(string[j-1])) {
+        j++;
+        break;
+      } else if (!isNaN(string[j]) &&
+                (string[j-1] === '+' ||
+                 string[j-1] === '/' ||
+                 string[j-1] === '*' ||
+                 string[j-1] === '(')) {
+                   firstNum.unshift(string[j])
+                   break;
+      } else if (!isNaN(string[j]) && string[j-1] === undefined) {
         firstNum.unshift(string[j]);
         break;
-      } else if (string[j] === '-' && !isNaN(string[j-1])) {
-        break;
       }
-      firstNum.unshift(string[j])
+      firstNum.unshift(string[j]);
     }
-    let fHalf = string.slice(0, string.indexOf(firstNum.join('')));
-    let secHalf = string.slice(string.indexOf(secNum) + secNum.length);
+
+    let fHalf = string.slice(0, j);
+    let secHalf = string.slice(i);
     console.log('FIRSTNUM: ', firstNum.join(''));
     console.log('OPERATOR: ', operator);
     console.log('SECNUM: ', secNum);

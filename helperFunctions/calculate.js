@@ -2,28 +2,14 @@ const solve = require('./solve.js').solve;
 
 module.exports = {
   math: (string, callback) => {
-    string = string.replace(/\s/g, ''); //santize string
+    //SANITIZE STRING - REMOVE WHITESPACE
+    string = string.replace(/\s/g, '');
 
-    // const calculate = (str) => {
-    //   console.log('CAL NEW STR: ', str);
-    //   //change for neg int solution
-    //   if (!str.includes('(') &&
-    //       !str.includes(')') &&
-    //       !str.includes('/') &&
-    //       !str.includes('*') &&
-    //       !str.includes('+') &&
-    //       !str.includes('-')) {
-    //     callback(str);
-    //     return;
-    //   } else {
-    //   }
       solve(string, (res) => {
         console.log('RES', res);
         callback(res);
-        // calculate(res);
       });
-    // }
-    // calculate(string);
+
   }
 };
 

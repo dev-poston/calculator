@@ -9,6 +9,7 @@ module.exports = {
     let operator = string[op];
     const operators = ['*', '/', '+'];
 
+    //======FIND NUMBER RIGHT OF OPERATOR=====
     for (var i = op + 1; i < string.length; i++) {
       if (secNum.length >= 1 && string[i] === '-') {
         break;
@@ -19,12 +20,14 @@ module.exports = {
         break;
       }
     }
+    //=========================================
 
-    // if we hit a neg operator - and its followed by another operator - slice at neg operator
-    // if we hit a neg operator and its follow by an int - slice at int
-    // if we hit an int and the next item is an operator - slice at int
-    // if we hit an int and the next is undefined - unshift
+    // if we hit a neg operator - and next item is an operator - slice at neg operator
+    // if we hit a neg operator - and next item an int - slice at int
+    // if we hit an int - and next item is an operator - slice at int
+    // if we hit an int - and next item is undefined - slice at int
 
+    //=====FIND NUMBER LEFT OF OPERATOR======
     for (var j = op - 1; j >= 0; j--) {
       if ((string[j] === '-' || !isNaN(string[j])) && (operators.includes(string[j-1]) || string[j-1] === undefined)) {
         firstNum.unshift(string[j]);
@@ -35,7 +38,9 @@ module.exports = {
       }
       firstNum.unshift(string[j]);
     }
+    //=======================================
 
+    //======STORE LEFT & RIGHT OF THE AO=====
     let fHalf = string.slice(0, j);
     let secHalf = string.slice(i);
 
@@ -44,7 +49,9 @@ module.exports = {
     console.log('SECNUM: ', secNum);
     console.log('fHALF: ', fHalf);
     console.log('secHALF: ', secHalf);
+    //=======================================
 
+    //=====EVALUATE THE AO - CONCAT WITH THE LEFT & RIGHT OF AO=====
     quickMaths(firstNum.join(''), operator, secNum, (res) => {
       console.log('qMath RES: ', res.toString());
       callback(fHalf + res.toString() + secHalf);

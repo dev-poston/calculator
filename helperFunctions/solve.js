@@ -5,14 +5,24 @@ module.exports = {
     console.log('SOLVE:', str);
 
     let dissect = (s) => {
-      let firstHalf;
-      let secHalf;
+      if (s.includes('/0') && !s.includes('/0.')) {
+        alert('Beep Boop - Sorry, I Cannot Divide by Zero.')
+        return;
+      }
+      let regExp = /[a-zA-Z]/g;
+      if (regExp.test(s)) {
+        alert('Beep Boop - Sorry, I Cannot Compute That Expression.')
+        return;
+      }
 
       if (Number(s)) {
         console.log('SOLVED!!!');
         callback(s);
         return;
       }
+
+      let firstHalf;
+      let secHalf;
 
       for (let i = 0; i < s.length; i++) {
         // store indexOf first paren instead of using indexof 3x
@@ -31,11 +41,9 @@ module.exports = {
             console.log('parenSEC: ', parenSec);
             console.log('SECparenHALF: ', secHalf);
           let solveParens = dissect(parenSec);
-          // console.log('EQ: ', firstHalf + solveParens + secHalf);
           // callback(firstHalf + solveParens + secHalf);
           // break;
         } else if (s.includes('/') || s.includes('*')) {
-          // store indexOf first paren instead of using indexof 3x
           //do div by zero check
           console.log('D or M', s);
           let divideOrMultiply;
@@ -44,16 +52,13 @@ module.exports = {
           } else {
             divideOrMultiply = s.indexOf('*');
           }
-          console.log('index DorM: ', divideOrMultiply);
           findNums(divideOrMultiply, s, (res) => {
-            console.log('fNUMS RES: ', res);
             dissect(res);
           });
           break;
         } else if (s[i - 1] && (s[i] === '-' || s[i] === '+')) {
           console.log('S or A:', s);
           findNums(i, s, (res) => {
-            console.log('fNUMS RES: ', res);
             dissect(res);
           });
           break;

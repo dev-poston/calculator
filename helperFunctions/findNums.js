@@ -25,27 +25,25 @@ module.exports = {
     // if we hit an int and the next item is an operator - slice at int
     // if we hit an int and the next is undefined - unshift
     for (var j = op - 1; j >= 0; j--) {
-      if (string[j] === '-' &&
-         (string[j-1] === '+' ||
-          string[j-1] === '/' ||
-          string[j-1] === '*' ||
-          string[j-1] === '(')) {
+      if ((string[j] === '-' || !isNaN(string[j])) &&
+         (string[j-1] === '+' || string[j-1] === '/' || string[j-1] === '*' || string[j-1] === '(')) {
             firstNum.unshift(string[j]);
             break;
       } else if (string[j] === '-' && !isNaN(string[j-1])) {
         j++;
         break;
-      } else if (!isNaN(string[j]) &&
-                (string[j-1] === '+' ||
-                 string[j-1] === '/' ||
-                 string[j-1] === '*' ||
-                 string[j-1] === '(')) {
-                   firstNum.unshift(string[j])
-                   break;
-      } else if (!isNaN(string[j]) && string[j-1] === undefined) {
+      // } else if ((!isNaN(string[j]) || string[j] === '-') &&
+      //           (string[j-1] === '+' || string[j-1] === '/' || string[j-1] === '*' || string[j-1] === '(')) {
+      //              firstNum.unshift(string[j])
+      //              break;
+      } else if ((!isNaN(string[j]) || string[j] === '-') && string[j-1] === undefined) {
         firstNum.unshift(string[j]);
         break;
       }
+      //  else if (string[j] === '-' && string[j-1] === undefined) {
+      //   firstNum.unshift(string[j]);
+      //   break;
+      // }
       firstNum.unshift(string[j]);
     }
 

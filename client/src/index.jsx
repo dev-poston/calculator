@@ -2,20 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../styles/styles.css';
 import InputField from './Components/InputField.jsx';
-import helper from '../../helperFunctions/calculate.js';
+import API from './API.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      solution: '0'
+      solution: 0
     };
     this.calculator = this.calculator.bind(this);
   };
 
   calculator(input) {
-    helper.math(input, (data) => {
-      console.log('data: ', data);
+    API.post({input}, (data) => {
+      console.log('CLIENT API RES: ', data);
+      this.setState({
+        solution: data
+      });
     });
   };
 
@@ -23,7 +26,10 @@ class App extends React.Component {
     return(
       <div>
         <h1 className='title'>Super Math Calculator 5000</h1>
-        <InputField calculator={this.calculator}/>
+        <InputField
+          calculator={this.calculator}
+          solution={this.state.solution}
+        />
       </div>
     );
   };

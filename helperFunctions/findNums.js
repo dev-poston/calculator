@@ -2,7 +2,6 @@ const quickMaths = require('./math.js').quickMaths;
 
 module.exports = {
   nums: (op, string, callback) => {
-    console.log('OP: ', string[op], 'OP INDEX: ', op, 'string: ', string);
 
     let firstNum = [];
     let secNum = '';
@@ -20,7 +19,6 @@ module.exports = {
         break;
       }
     }
-    //=========================================
 
     // if we hit a neg operator - and next item is an operator - slice at neg operator
     // if we hit a neg operator - and next item an int - slice at int
@@ -38,7 +36,6 @@ module.exports = {
       }
       firstNum.unshift(string[j]);
     }
-    //=======================================
 
     //======STORE LEFT & RIGHT OF THE AO=====
     let fHalf = string.slice(0, j);
@@ -49,11 +46,9 @@ module.exports = {
     console.log('SECNUM: ', secNum);
     console.log('fHALF: ', fHalf);
     console.log('secHALF: ', secHalf);
-    //=======================================
 
     //=====EVALUATE THE AO - CONCAT WITH THE LEFT & RIGHT OF AO=====
     quickMaths(firstNum.join(''), operator, secNum, (res) => {
-      console.log('qMath RES: ', res.toString());
       callback(fHalf + res.toString() + secHalf);
     })
   }

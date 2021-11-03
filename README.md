@@ -1,1 +1,52 @@
 # calculator
+
+
+## Table of Contents
+1. [Description](#description)
+2. [Requirements](#requirements)
+3. [Installation](#installation)
+4. [Technologies](#technologies)
+
+## Description
+- Supports division, multiplication, addition, subtraction, and parentheses.
+- An operation can be created from the keyboard or from clicking the buttons (keyboard is available in mobile version by tapping on the operation area).
+- Pressing '=' submits the operation to be solved, result will appear in the top section.
+- All Clear button ('AC') clears both result and operation fields.
+
+
+## Requirements
+- Node ^6.13.0
+
+## Installation
+1. Clone repository
+2. Install dependencies:
+```sh
+npm install
+```
+3. Create the bundle file:
+```sh
+npm run build (development mode)
+```
+4. Start the server:
+```sh
+npm start
+```
+5. Application available at http://localhost:1337
+
+
+### Test command
+```sh
+npm test
+```
+
+## Technologies
+- React & ReactDOM
+- Node.js
+- Express.js
+- Axios
+- CSS
+- HTML
+- Babel
+- Webpack
+- Jest
+- sinful-math

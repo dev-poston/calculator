@@ -3,7 +3,6 @@ const findNums = require('./findNums.js').nums;
 module.exports = {
   solve: (str, callback) => {
     let solution;
-
     let dissect = (s) => {
       //=============ERROR HANDLING===========
       if (s.includes('/0') && !s.includes('/0.')) {
@@ -16,16 +15,13 @@ module.exports = {
         alert('Beep Boop - Sorry, I Cannot Compute That Expression.')
         return;
       }
-      //======================================
 
       //=====BASES CASE - EQUATION SOLVED=====
       if (Number(s)) {
-        console.log('SOLVED!!!', s);
-        // callback(s);
-        solution = Number(s);
+        console.log('SOLVED: ', s);
+        solution = s;
         return;
       }
-      //======================================
 
       let firstHalf;
       let secHalf;
@@ -75,6 +71,6 @@ module.exports = {
       };
     };
     dissect(str);
-    callback(sol);
+    callback(solution);
   }
 };

@@ -5,11 +5,10 @@ module.exports = {
     //SANITIZE STRING - REMOVE WHITESPACE
     string = string.replace(/\s/g, '');
 
-      solve(string, (res) => {
-        console.log('RES', res);
-        callback(res);
-      });
-
+    solve(string, (res) => {
+      console.log('RES', res);
+      callback(res);
+    });
   }
 };
 

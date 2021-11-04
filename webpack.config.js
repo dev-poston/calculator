@@ -29,4 +29,4 @@ module.exports = {
     }]
   },
   mode: 'development'
-}
+};

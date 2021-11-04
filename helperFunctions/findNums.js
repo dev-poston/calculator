@@ -8,7 +8,7 @@ module.exports = {
     let operator = string[op];
     const operators = ['*', '/', '+'];
 
-    //======FIND NUMBER RIGHT OF OPERATOR=====
+    //======FIND NUMBER RIGHT OF OPERATOR=====//
     for (var i = op + 1; i < string.length; i++) {
       if (secNum.length >= 1 && string[i] === '-') {
         break;
@@ -40,12 +40,6 @@ module.exports = {
     //======STORE LEFT & RIGHT OF THE AO=====
     let fHalf = string.slice(0, j);
     let secHalf = string.slice(i);
-
-    console.log('FIRSTNUM: ', firstNum.join(''));
-    console.log('OPERATOR: ', operator);
-    console.log('SECNUM: ', secNum);
-    console.log('fHALF: ', fHalf);
-    console.log('secHALF: ', secHalf);
 
     //=====EVALUATE THE AO - CONCAT WITH THE LEFT & RIGHT OF AO=====
     quickMaths(firstNum.join(''), operator, secNum, (res) => {

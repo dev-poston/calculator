@@ -11,16 +11,22 @@ class App extends React.Component {
       solution: 0,
       input: ''
     };
-    this.setInput = this.setInput.bind(this);
+    this.handleButtons = this.handleButtons.bind(this);
+    this.handleTextField = this.handleTextField.bind(this);
     this.handleClear = this.handleClear.bind(this);
     this.calculator = this.calculator.bind(this);
   };
 
-  setInput(e, equation) {
+  handleButtons(e, equation) {
     e.preventDefault();
-    console.log('SETINPUT: ', equation);
     this.setState({
       input: this.state.input + equation
+    });
+  };
+
+  handleTextField(equation) {
+    this.setState({
+      input: equation
     });
   };
 
@@ -30,7 +36,7 @@ class App extends React.Component {
       input: '',
       solution: 0
     });
-  }
+  };
 
   calculator(e, input) {
     e.preventDefault();
@@ -50,10 +56,11 @@ class App extends React.Component {
     return(
       <div>
         <InputField
+          handleButtons={this.handleButtons}
+          handleTextField={this.handleTextField}
           clear={this.handleClear}
-          equation={this.state.input}
-          setInput={this.setInput}
           calculator={this.calculator}
+          equation={this.state.input}
           solution={this.state.solution}
         />
       </div>

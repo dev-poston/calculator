@@ -5,10 +5,8 @@ module.exports = {
   solve: (str, callback) => {
     let solution;
     let dissect = (s) => {
-      console.log("s", s);
       //=============ERROR HANDLING===========//
       if(Number(s) === 0) { //IF INPUT IS EMPTY - RETURN STRING TO ALERY
-        console.log('hit');
         solution = '0';
         return;
       }

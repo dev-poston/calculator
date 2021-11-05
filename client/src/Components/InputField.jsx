@@ -14,8 +14,8 @@ const InputField = (props) => (
     <div className='nums'>
       {/* OPERATORS */}
       <div className='ac' onClick={(e) => props.clear(e)}> AC </div>
-      <div id='parens' onClick={(e) => props.handleButtons(e, '(')}> ( </div>
-      <div id='parens' onClick={(e) => props.handleButtons(e, ')')}> ) </div>
+      <div onClick={(e) => props.handleButtons(e, '(')}> ( </div>
+      <div onClick={(e) => props.handleButtons(e, ')')}> ) </div>
       {/* BUTTONS */}
       <div onClick={(e) => props.handleButtons(e, '7')}> 7 </div>
       <div onClick={(e) => props.handleButtons(e, '8')}> 8 </div>

@@ -64,7 +64,6 @@ describe ('example equations', () => {
         if (err) {
           console.log('TEST ERROR: ', err);
         } else {
-          console.log('TEST DATA:', data, '<<<<<');
           expect(data.status).toBe(200);
           expect(data.data).toBe(10);
         }

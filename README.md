@@ -1,5 +1,6 @@
 # calculator
 
+<img src="calculator.png">
 
 ## Table of Contents
 1. [Description](#description)
@@ -9,8 +10,8 @@
 
 ## Description
 - Supports division, multiplication, addition, subtraction, and parentheses.
-- An operation can be created from the keyboard or from clicking the buttons (keyboard is available in mobile version by tapping on the operation area).
-- Pressing '=' submits the operation to be solved, result will appear in the top section.
+- An operation can be created from the keyboard and/or by clicking the numeric buttons.
+- Pressing [=] submits the operation to be solved, result will appear in the top section.
 - All Clear button ('AC') clears both result and operation fields.
 
 

@@ -8,31 +8,40 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      solution: '',
+      solution: 0,
       input: ''
     };
     this.setInput = this.setInput.bind(this);
+    this.handleClear = this.handleClear.bind(this);
     this.calculator = this.calculator.bind(this);
   };
 
-  setInput(equation) {
+  setInput(e, equation) {
+    e.preventDefault();
     console.log('SETINPUT: ', equation);
     this.setState({
-      input: equation
+      input: this.state.input + equation
     });
   };
+
+  handleClear(e) {
+    e.preventDefault();
+    this.setState({
+      input: '',
+      solution: 0
+    });
+  }
 
   calculator(e, input) {
     e.preventDefault();
     API.post({input}, (data) => {
-      console.log('CLIENT API RES: ', data);
       if (typeof data === 'string') {
         alert(data);
       } else {
         this.setState({
           input: '',
           solution: data
-        }, () => console.log('STATE: ', this.state));
+        });
       }
     });
   };
@@ -40,8 +49,8 @@ class App extends React.Component {
   render() {
     return(
       <div>
-        <h1 className='title'>Super Math Calculator 5000</h1>
         <InputField
+          clear={this.handleClear}
           equation={this.state.input}
           setInput={this.setInput}
           calculator={this.calculator}

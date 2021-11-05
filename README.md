@@ -32,9 +32,9 @@ Premium features under development for subscribed users:
 ```sh
 npm install
 ```
-3. Create the bundle file:
+3. Create the bundle file (development mode):
 ```sh
-npm run build (development mode)
+npm run build
 ```
 4. Start the server:
 ```sh

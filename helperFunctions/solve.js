@@ -5,10 +5,11 @@ module.exports = {
   solve: (str, callback) => {
     let solution;
     let dissect = (s) => {
-
+      console.log("s", s);
       //=============ERROR HANDLING===========//
-      if(!s.length) { //IF INPUT IS EMPTY - RETURN STRING TO ALERY
-        solution = 0;
+      if(Number(s) === 0) { //IF INPUT IS EMPTY - RETURN STRING TO ALERY
+        console.log('hit');
+        solution = '0';
         return;
       }
       if (s.includes('/0') && !s.includes('/0.')) { //IF USER ATTEMPTS TO DIVIDE BY 0 - RETURN ERROR MESSAGE TO ALERT

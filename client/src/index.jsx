@@ -9,7 +9,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       solution: 0,
-      input: ''
+      input: '0'
     };
     this.handleButtons = this.handleButtons.bind(this);
     this.handleTextField = this.handleTextField.bind(this);
@@ -44,6 +44,7 @@ class App extends React.Component {
   calculator(e, input) {
     e.preventDefault();
     API.post({input}, (err, data) => {
+      console.log('data', data);
       if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING
         alert('Beep Boop - Sorry, I encountered an error. Please Try Again Later.');
       } else {

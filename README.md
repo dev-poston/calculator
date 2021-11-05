@@ -9,10 +9,10 @@
 4. [Technologies](#technologies)
 
 ## Description
-- Supports division, multiplication, addition, subtraction, and parentheses.
+- Supports positive/negative integers, floats, division [&#247;], multiplication [*], addition [+], subtraction [-], and parentheses[()].
 - An operation can be created from the keyboard and/or by clicking the numeric buttons.
-- Pressing [=] submits the operation to be solved, result will appear in the top section.
-- All Clear button ('AC') clears both result and operation fields.
+- Pressing [=] submits the operation to be solved, result will replace the input field (operation).
+- Pressing the All Clear button [AC] clears both the input and result.
 
 
 ## Requirements

@@ -6,8 +6,10 @@ module.exports = {
     //SANITIZE STRING - REMOVE WHITESPACE
     string = string.replace(/\s/g, '');
     solve(string, (res) => {
-      callback(res);
+      callback(null, res);
     });
+
+    //ADD MORE ADV OPERATORS HERE...
 
   }
 };

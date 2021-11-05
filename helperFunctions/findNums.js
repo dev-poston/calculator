@@ -27,7 +27,8 @@ module.exports = {
 
     //=====FIND NUMBER LEFT OF OPERATOR======
     for (var j = op - 1; j >= 0; j--) {
-      if ((string[j] === '-' || !isNaN(string[j])) && (operators.includes(string[j-1]) || string[j-1] === undefined)) {
+      if ((string[j] === '-' || !isNaN(string[j])) &&
+        (operators.includes(string[j-1]) || string[j-1] === undefined)) {
         firstNum.unshift(string[j]);
         break;
       } else if (string[j] === '-' && !isNaN(string[j-1])) {
@@ -36,7 +37,6 @@ module.exports = {
       }
       firstNum.unshift(string[j]);
     }
-
     //======STORE LEFT & RIGHT OF THE AO=====
     let fHalf = string.slice(0, j);
     let secHalf = string.slice(i);
@@ -44,6 +44,6 @@ module.exports = {
     //=====EVALUATE THE AO - CONCAT WITH THE LEFT & RIGHT OF AO=====
     quickMaths(firstNum.join(''), operator, secNum, (res) => {
       callback(fHalf + res.toString() + secHalf);
-    })
+    });
   }
 };

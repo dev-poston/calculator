@@ -40,14 +40,18 @@ class App extends React.Component {
 
   calculator(e, input) {
     e.preventDefault();
-    API.post({input}, (data) => {
-      if (typeof data === 'string') {
-        alert(data);
+    API.post({input}, (err, data) => {
+      if (err) {
+        alert('Beep Boop - Sorry, I encountered as error. Please Try Again Later.');
       } else {
-        this.setState({
-          input: '',
-          solution: data
-        });
+        if (typeof data === 'string') {
+          alert(data);
+        } else {
+          this.setState({
+            input: '',
+            solution: data
+          });
+        }
       }
     });
   };

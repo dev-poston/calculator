@@ -9,6 +9,8 @@ body {
 	font-family: "Source Sans Pro", sans-serif;
 	background: #b5b4b4;
 	text-align: center;
+  color: #fff;
+  font-size: 64px;
 }
 
 .calc {
@@ -22,8 +24,7 @@ body {
 }
 
 .display,	.nums div, .ops div {
-  height: auto;
-  border: 1px solid #535052;
+  border: 1px solid #333333;
   box-sizing: border-box;
   background: #7C7A7B;
   color: #FFF;
@@ -35,10 +36,9 @@ body {
   text-align: right;
   padding-right: 17px;
   font-size: 80px;
-  background: #535052;
+  background: #333333;
   color: #fff;
-  border: 1px solid #535052;
-  user-select: auto;
+  border: 1px solid #333333;
   cursor: text;
 }
 
@@ -50,11 +50,7 @@ body {
 .ops {
   border: 1px solid #535052;
   background: #FD8D0E;
-}
-
-div {
-  color: #fff;
-  font-size: 64px;
+  cursor: pointer;
 }
 
 .nums {

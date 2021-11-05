@@ -2,10 +2,14 @@ const findNums = require('./findNums.js').nums;
 
 module.exports = {
   solve: (str, callback) => {
-
     let solution;
     let dissect = (s) => {
+
       //=============ERROR HANDLING===========//
+      if(!s.length) {
+        solution = 0;
+        return;
+      }
       if (s.includes('/0') && !s.includes('/0.')) {
         solution = 'Beep Boop - Sorry, I Cannot Divide by Zero.'
         return;
@@ -16,17 +20,17 @@ module.exports = {
         return;
       }
 
-      //=====BASES CASE - EQUATION SOLVED=====//
+      //=====BASES CASE FOR RECURSION - EQUATION SOLVED=====//
       if (Number(s)) {
-        console.log('SOLVED: ', s, '<<<');
+        console.log('SOLVED: ', s, '<');
         solution = s;
         return;
       }
 
+      //=====PRIORITY - HANDLE PAREN AREA=====//
       let firstHalf;
       let secHalf;
       for (let i = 0; i < s.length; i++) {
-        //=====PRIORITY - HANDLE PARENS=====//
         if (s.includes('(')) {
           let openParen = s.indexOf('(');
           firstHalf = s.slice(0, openParen);
@@ -63,9 +67,7 @@ module.exports = {
         }
       };
     };
-
     dissect(str);
     callback(solution);
-
   }
 };

@@ -1,7 +1,8 @@
-const { add, sub, mul, div } = require('sinful-math');
+const {add, sub, mul, div} = require('sinful-math');
 
 module.exports = {
   quickMaths: (a, op, b, callback) => {
+    //PERFORM MATH OPERATION FOR [+, -, *, /]
     if (op === '+') {
       callback((Number.isInteger(a) && Number.isInteger(b)) ? (a + b) : (add(a, b)));
     }

@@ -8,15 +8,23 @@
 3. [Installation](#installation)
 4. [Technologies](#technologies)
 
+
 ## Description
-- Supports positive/negative integers, floats, division [&#247;], multiplication [*], addition [+], subtraction [-], and parentheses[()].
+- Supports positive/negative integers, floats, division [/], multiplication [*], addition [+], subtraction [-], and parentheses[( )].
 - An operation can be created from the keyboard and/or by clicking the numeric buttons.
 - Pressing [=] submits the operation to be solved, result will replace the input field (operation).
 - Pressing the All Clear button [AC] clears both the input and result.
+- Errors will alert the user in the case of letters(including [x]), divison by zero or an empty input field.
+
+Premium features under development for subscribed users:
+- Conversion of an [x] to [*].
+- Multiplication of integers when next to parens - Ex. [2(3+4)]
+- Submission of equation using the command line.
 
 
 ## Requirements
 - Node ^6.13.0
+
 
 ## Installation
 1. Clone repository

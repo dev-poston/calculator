@@ -2,18 +2,21 @@ import React from 'react';
 
 const InputField = (props) => (
   <div className='calc'>
+    {/* DISPLAY AND INPUT */}
     <div className='display'>
     <input
       className='display'
       value={props.equation}
-      placeholder={props.solution}
+      placeholder={props.solution} //IMPORTANT - DISPLAYS RESULT
       onChange={(e) => props.handleTextField(e.target.value)}
     />
     </div>
     <div className='nums'>
+      {/* OPERATORS */}
       <div className='ac' onClick={(e) => props.clear(e)}> AC </div>
       <div id='parens' onClick={(e) => props.handleButtons(e, '(')}> ( </div>
       <div id='parens' onClick={(e) => props.handleButtons(e, ')')}> ) </div>
+      {/* BUTTONS */}
       <div onClick={(e) => props.handleButtons(e, '7')}> 7 </div>
       <div onClick={(e) => props.handleButtons(e, '8')}> 8 </div>
       <div onClick={(e) => props.handleButtons(e, '9')}> 9 </div>
@@ -26,6 +29,7 @@ const InputField = (props) => (
       <div className='num-0' onClick={(e) => props.handleButtons(e, '0')}> 0 </div>
       <div onClick={(e) => props.handleButtons(e, '.')}> . </div>
     </div>
+    {/* OPERATORS */}
     <div className='opsbox'>
       <div className='ops' onClick={(e) => props.handleButtons(e, '/')}> &#247; </div>
       <div className='ops' onClick={(e) => props.handleButtons(e, '*')}> &#215; </div>

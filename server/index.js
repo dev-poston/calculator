@@ -2,13 +2,13 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const port = 1337;
-const helper = require('../helperFunctions/calculator.js');
+const calculator = require('../helperFunctions/calculator.js').math;
 
 app.use(express.static('client/dist'));
 app.use(bodyParser.json());
 
 app.post('/calculate', (req, res) => {
-  helper.math(req.body.input, (err, data) => {
+  calculator(req.body.input, (err, data) => { //SEND EQUATION TO CALCULATOR
     if (err) {
       res.status(400).send(err);
     } else {

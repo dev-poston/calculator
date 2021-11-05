@@ -16,7 +16,7 @@ class App extends React.Component {
     this.handleClear = this.handleClear.bind(this);
     this.calculator = this.calculator.bind(this);
   };
-
+  //=====HANDLE CALCULATOR BUTTON PRESS=====//
   handleButtons(e, equation) {
     e.preventDefault();
     this.setState({
@@ -24,29 +24,32 @@ class App extends React.Component {
     });
   };
 
+  //=====HANDLE TEXT FIELD INPUT=====//
   handleTextField(equation) {
     this.setState({
       input: equation
     });
   };
 
+  //=====HANDLE CLEAR BUTTON - CLEARS INPUT & RESULT=====//
   handleClear(e) {
     e.preventDefault();
-    this.setState({
+    this.setState({ //IMPORTANT - CLEAR INPUT SO PLACEHOLDER WITH RESULT CAN BE VISIBLE
       input: '',
       solution: 0
     });
   };
 
+  //=====HANDLE THE SUBMISSION OF AN EQUATION=====//
   calculator(e, input) {
     e.preventDefault();
     API.post({input}, (err, data) => {
-      if (err) {
-        alert('Beep Boop - Sorry, I encountered as error. Please Try Again Later.');
+      if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING
+        alert('Beep Boop - Sorry, I encountered an error. Please Try Again Later.');
       } else {
-        if (typeof data === 'string') {
+        if (typeof data === 'string') { //ALERTS FOR ERROR HANDLING
           alert(data);
-        } else {
+        } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY
           this.setState({
             input: '',
             solution: data

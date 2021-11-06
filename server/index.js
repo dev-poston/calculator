@@ -12,7 +12,6 @@ app.post('/calculate', (req, res) => {
     if (err) {
       res.status(400).send(err);
     } else {
-      console.log('SERVER DATA: ', data);
       res.status(200).send(data);
     }
   });

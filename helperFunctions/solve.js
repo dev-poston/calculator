@@ -6,10 +6,6 @@ module.exports = {
     let solution;
     let dissect = (s) => {
       //=============ERROR HANDLING===========//
-      if(s === '0') { //IF INPUT IS EMPTY - RETURN STRING TO ALERY
-        solution = s;
-        return;
-      }
       if (s.includes('/0') && !s.includes('/0.')) { //IF USER ATTEMPTS TO DIVIDE BY 0 - RETURN ERROR MESSAGE TO ALERT
         solution = 'Beep Boop - Sorry, I Cannot Divide by Zero.'
         return;

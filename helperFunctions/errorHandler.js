@@ -1,6 +1,5 @@
 module.exports ={
   error: (input, callback) => {
-    console.log('ERROR INPUT', input);
     if (input.includes('/0') && !input.includes('/0.')) { //IF USER ATTEMPTS TO DIVIDE BY 0 - RETURN ERROR MESSAGE TO ALERT
       return 'Beep Boop - Sorry, I Cannot Divide by Zero.';
     }

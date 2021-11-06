@@ -1,10 +1,10 @@
-const solve = require('./solve.js').solve;
+const handlePrecedence = require('./handlePrecedence.js').solve;
 
 module.exports = {
   math: (string, callback) => {
 
     string = string.replace(/\s/g, ''); //SANITIZE STRING - REMOVE WHITESPACE
-    solve(string, (res) => { // PASS INTO SOLVE MODULE TO HANDLE PRECEDENCE
+    handlePrecedence(string, (res) => { // PASS INTO SOLVE MODULE TO HANDLE PRECEDENCE
       callback(null, res); //SEND RESULT BACK TO SERVER
     });
 

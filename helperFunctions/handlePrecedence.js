@@ -1,6 +1,6 @@
 const findNums = require('./findNums.js').nums;
 const checkError = require('./errorHandler.js').error;
-//*NOTE - FUTURE CHANGES: MODULARIZE ERROR HANDLER, PARENS, DIVIDE/MULTIPLY & SUBTRACT/ADD
+//*NOTE - FUTURE CHANGES: MODULARIZE PARENS, DIVIDE/MULTIPLY & SUBTRACT/ADD
 
 module.exports = {
   solve: (str, callback) => {

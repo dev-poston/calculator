@@ -48,10 +48,10 @@ class App extends React.Component {
       API.post({input: passed}, (err, data) => {
         if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING!
           alert('Beep Boop - Sorry, I encountered an error. Please Try Again Later.');
-        } else {
-          if (typeof data === 'string') { //ALERTS FOR ERROR HANDLING
+        } else { //ALERTS FOR ERROR HANDLING
+          if (typeof data === 'string') {
             alert(data);
-          } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY
+          } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY, RESET INPUT
             this.setState({
               input: '',
               solution: data

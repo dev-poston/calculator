@@ -1,4 +1,5 @@
 const findNums = require('./findNums.js').nums;
+const checkError = require('./errorHandler.js').error;
 //*NOTE - FUTURE CHANGES: MODULARIZE ERROR HANDLER, PARENS, DIVIDE/MULTIPLY & SUBTRACT/ADD
 
 module.exports = {
@@ -6,19 +7,13 @@ module.exports = {
     let solution;
     let dissect = (s) => {
       //=============ERROR HANDLING===========//
-      if (s.includes('/0') && !s.includes('/0.')) { //IF USER ATTEMPTS TO DIVIDE BY 0 - RETURN ERROR MESSAGE TO ALERT
-        solution = 'Beep Boop - Sorry, I Cannot Divide by Zero.'
-        return;
-      }
-      const regExp = /[a-zA-Z]/g;
-      if (regExp.test(s) || s.includes('undefined')) { // IF USER INPUTS A LETTER - RETURN ERROR MESSAGE TO ALERT
-        solution = 'Beep Boop - Sorry, I Cannot Compute That Expression.';
+      if (checkError(s)) {
+        solution = checkError(s);
         return;
       }
 
       //=====BASES CASE FOR RECURSION - EQUATION SOLVED=====//
       if (Number(s)) { //IF NUMBER(S) EVALUATES TO TRUE, WE KNOW EQUATION HAS BEEN SOLVED - REMOVE FROM CALLSTACK
-        console.log('SOLVED: ', s, '<');
         solution = s;
         return;
       }

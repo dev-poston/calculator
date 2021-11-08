@@ -1,9 +1,11 @@
+const compression = require('compression');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const port = 1337;
 const calculator = require('../helperFunctions/calculator.js').math;
 
+app.use(compression());
 app.use(express.static('client/dist'));
 app.use(bodyParser.json());
 

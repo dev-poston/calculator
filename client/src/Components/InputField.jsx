@@ -1,7 +1,8 @@
 import React from 'react';
 
-const InputField = (props) => (
-  <div className='calc'>
+const InputField = (props) => {
+  const buttons = ['(', ')', '7', '8', '9', '4', '5', '6', '1', '2', '3'];
+  return (<div className='calc'>
     {/* DISPLAY AND INPUT */}
     <div className='display'>
     <input
@@ -11,25 +12,16 @@ const InputField = (props) => (
       onChange={(e) => props.handleTextField(e.target.value)}
     />
     </div>
+    {/* BUTTONS & OPERATORS */}
     <div className='nums'>
-      {/* OPERATORS */}
       <div className='ac' onClick={(e) => props.clear(e)}> AC </div>
-      <div onClick={(e) => props.handleButtons(e, '(')}> ( </div>
-      <div onClick={(e) => props.handleButtons(e, ')')}> ) </div>
-      {/* BUTTONS */}
-      <div onClick={(e) => props.handleButtons(e, '7')}> 7 </div>
-      <div onClick={(e) => props.handleButtons(e, '8')}> 8 </div>
-      <div onClick={(e) => props.handleButtons(e, '9')}> 9 </div>
-      <div onClick={(e) => props.handleButtons(e, '4')}> 4 </div>
-      <div onClick={(e) => props.handleButtons(e, '6')}> 6 </div>
-      <div onClick={(e) => props.handleButtons(e, '5')}> 5 </div>
-      <div onClick={(e) => props.handleButtons(e, '1')}> 1 </div>
-      <div onClick={(e) => props.handleButtons(e, '2')}> 2 </div>
-      <div onClick={(e) => props.handleButtons(e, '3')}> 3 </div>
+      {buttons.map((button, index) =>
+        <div key={index} onClick={(e) => props.handleButtons(e, button)}>{button}</div>
+      )}
       <div className='num-0' onClick={(e) => props.handleButtons(e, '0')}> 0 </div>
       <div onClick={(e) => props.handleButtons(e, '.')}> . </div>
     </div>
-    {/* OPERATORS */}
+    {/* MORE OPERATORS */}
     <div className='opsbox'>
       <div className='ops' onClick={(e) => props.handleButtons(e, '/')}> &#247; </div>
       <div className='ops' onClick={(e) => props.handleButtons(e, '*')}> &#215; </div>
@@ -37,7 +29,7 @@ const InputField = (props) => (
       <div className='ops' onClick={(e) => props.handleButtons(e, '+')}> + </div>
       <div className='ops' onClick={(e) => props.calculator(e, props.equation)}> = </div>
     </div>
-  </div>
-);
+  </div>)
+};
 
 export default InputField;

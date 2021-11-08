@@ -1,7 +1,6 @@
 module.exports ={
   error: (input, callback) => {
     if(input === '0') { //IF INPUT IS EMPTY - RETURN STRING TO ALERY
-      console.log('hit zero')
       return input;
     }
     if (input.includes('/0') && !input.includes('/0.')) { //IF USER ATTEMPTS TO DIVIDE BY 0 - RETURN ERROR MESSAGE TO ALERT

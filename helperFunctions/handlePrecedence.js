@@ -8,7 +8,7 @@ module.exports = {
     let dissect = async (s) => {
       //=============ERROR HANDLING===========//
       if (checkError(s)) {
-        solution = await checkError(s);
+        solution = checkError(s);
         return;
       }
 

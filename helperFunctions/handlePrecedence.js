@@ -5,10 +5,10 @@ const checkError = require('./errorHandler.js').error;
 module.exports = {
   solve: (str, callback) => {
     let solution;
-    let dissect = (s) => {
+    let dissect = async (s) => {
       //=============ERROR HANDLING===========//
       if (checkError(s)) {
-        solution = checkError(s);
+        solution = await checkError(s);
         return;
       }
 

@@ -1,4 +1,5 @@
 const API = require('../client/src/API.js');
+const regeneratorRuntime = require('regenerator-runtime');
 const calculator = require('../helperFunctions/calculator.js').math;
 
 

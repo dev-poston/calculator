@@ -28,9 +28,27 @@ describe ('example equations', () => {
     });
   });
 
-  it ('should solve parens', () => {
+  it ('should solve floats', () => {
+    calculator('.1+.2', (err, data) => {
+      expect(data).toBe('0.3');
+    });
+  });
+
+  it ('should solve single parens', () => {
     calculator('(4-2)*3.5', (err, data) => {
       expect(data).toBe('7');
+    });
+  });
+
+  it ('should solve single parens without equations', () => {
+    calculator('(1)+1', (err, data) => {
+      expect(data).toBe('2');
+    });
+  });
+
+  it ('should solve double parens', () => {
+    calculator('(1+1)+(1-1)', (err, data) => {
+      expect(data).toBe('2');
     });
   });
 
@@ -48,6 +66,12 @@ describe ('example equations', () => {
 
   it ('should alert users when given an improperly formatted equation', () => {
     calculator('2+-+-4', (err, data) => {
+      expect(data).toBe('Beep Boop - Sorry, I Cannot Compute That Expression.');
+    });
+  });
+
+  it ('should alert users when given an improperly formatted equation', () => {
+    calculator('19 + cinnamon', (err, data) => {
       expect(data).toBe('Beep Boop - Sorry, I Cannot Compute That Expression.');
     });
   });

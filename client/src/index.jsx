@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import '../styles/styles.css';
 import InputField from './Components/InputField.jsx';
 import API from './API.js';
-import controlInput from '../../helperFunctions/controlInput.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -44,21 +43,19 @@ class App extends React.Component {
   //=====HANDLE THE SUBMISSION OF AN EQUATION=====//
   calculator(e, input) {
     e.preventDefault();
-    controlInput.check(input, (passed) => { //CONTROLED INPUT CHECK
-      API.post({input: passed}, (err, data) => {
-        if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING!
-          alert('Beep Boop - Sorry, I encountered an error. Please Try Again Later.');
-        } else { //ALERTS FOR ERROR HANDLING
-          if (typeof data === 'string') {
-            alert(data);
-          } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY, RESET INPUT
-            this.setState({
-              input: '',
-              solution: data
-            });
-          }
+    API.post({input: passed}, (err, data) => {
+      if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING!
+        alert('Beep Boop - Sorry, I encountered an error. Please Try Again Later.');
+      } else { //ALERTS FOR ERROR HANDLING
+        if (typeof data === 'string') {
+          alert(data);
+        } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY, RESET INPUT
+          this.setState({
+            input: '',
+            solution: data
+          });
         }
-      });
+      }
     });
   };
 

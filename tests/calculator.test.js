@@ -75,19 +75,13 @@ describe ('example equations', () => {
       expect(data).toBe('Beep Boop - Sorry, I Cannot Compute That Expression.');
     });
   });
-
-  it ('should alert users when given an improperly formatted equation', () => {
-    calculator('19 + cinnamon', (err, data) => {
-      expect(data).toBe('Beep Boop - Sorry, I Cannot Compute That Expression.');
-    });
-  });
-
+});
 
   describe('API routes', () => {
     it ('should solve equation via API POST route', () => {
       API.post({input: '4*5/2'}, (err, data) => {
         if (err) {
-          console.log('TEST ERROR: ', err);
+          console.log('API TEST ERROR: ', err);
         } else {
           expect(data.status).toBe(200);
           expect(data.data).toBe(10);
@@ -95,5 +89,3 @@ describe ('example equations', () => {
       });
     });
   });
-
-});

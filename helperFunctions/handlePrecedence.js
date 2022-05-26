@@ -6,7 +6,6 @@ module.exports = {
     let solution;
     let dissect = async (s) => {
       //=============ERROR HANDLING===========//
-      console.log('handlePrecedense: ', s);
       if (checkError(s)) {
         solution = checkError(s);
         return;
@@ -17,7 +16,6 @@ module.exports = {
         solution = s;
         return;
       }
-
       //=====PRIORITY - HANDLE PAREN AREA=====//
       let firstHalf;
       let secHalf;

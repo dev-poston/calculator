@@ -1,12 +1,12 @@
 const findNums = require('./findNums.js').nums;
 const checkError = require('./errorHandler.js').error;
-//*NOTE - FUTURE CHANGES: MODULARIZE PARENS, DIVIDE/MULTIPLY & SUBTRACT/ADD
 
 module.exports = {
   solve: (str, callback) => {
     let solution;
     let dissect = async (s) => {
       //=============ERROR HANDLING===========//
+      console.log('handlePrecedense: ', s);
       if (checkError(s)) {
         solution = checkError(s);
         return;
@@ -21,24 +21,30 @@ module.exports = {
       //=====PRIORITY - HANDLE PAREN AREA=====//
       let firstHalf;
       let secHalf;
+      let openParenCount = 0;
+      let closeParenCount = 0;
 
       for (let i = 0; i < s.length; i++) {
         if (s.includes('(')) { //FIND OPENING PAREN
-
+          if (s[i] !== '(' && s[i] !== ')') {
+            continue;
+          }
           let openParen = s.indexOf('(');
-          firstHalf = s.slice(0, openParen); //STORE FIRST HALF OF EQUATION UP TO OPEN PAREN
-
-          for (var j = s.length - 1; j >= 0; j--) {
-            if (s[j] === ')') { //FIND CLOSING PAREN
-              secHalf = s.slice(j + 1); //STORE SECOND HALF OF EQUATION FROM CLOSING PAREN TO END
-              break;
-            }
+          if (s[i] === '(') {
+            openParenCount++;
+          }
+          if (s[i] === ')') {
+            closeParenCount++
           }
 
-          let parenSec = s.slice(openParen + 1, j); //STORE AREA INSIDE OF PARENS
-          dissect(parenSec); //SOLVE EQUATION INSIDE PARENS
-          dissect(firstHalf + solution + secHalf); //CONCAT SOLVED PAREN AREA WITH FIRST AND SECOND HALF OF EQUATION
-          break; //NO NEED TO CONTINUE SEARCHING
+          if (openParenCount === closeParenCount) {
+            let parenSec = s.slice(openParen + 1, i); //STORE AREA INSIDE OF PARENS
+            firstHalf = s.slice(0, openParen); //STORE FIRST HALF OF EQUATION UP TO OPEN PAREN
+            secHalf = s.slice(i + 1); //STORE SECOND HALF OF EQUATION FROM CLOSING PAREN TO END
+            dissect(parenSec); //SOLVE EQUATION INSIDE PARENS
+            dissect(firstHalf + solution + secHalf); //CONCAT SOLVED PAREN AREA WITH FIRST AND SECOND HALF OF EQUATION
+            break; //NO NEED TO CONTINUE SEARCHING
+          }
 
           //======HANDLE DIVISION AND MULTIPLICATION======//
         } else if (s.includes('/') || s.includes('*')) {

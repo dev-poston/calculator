@@ -43,7 +43,7 @@ class App extends React.Component {
   //=====HANDLE THE SUBMISSION OF AN EQUATION=====//
   calculator(e, input) {
     e.preventDefault();
-    API.post({input: passed}, (err, data) => {
+    API.post({input: input}, (err, data) => {
       if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING!
         alert('Beep Boop - Sorry, I encountered an error. Please Try Again Later.');
       } else { //ALERTS FOR ERROR HANDLING

@@ -1,7 +1,7 @@
 module.exports ={
   error: (input, callback) => {
-    if(input === '0') { //IF INPUT IS EMPTY - RETURN STRING TO ALERY
-      return input;
+    if(input === '0' || !input.length) { //IF INPUT IS EMPTY - RETURN STRING TO ALERT
+      return '0';
     }
     if (input.includes('/0') && !input.includes('/0.')) { //IF USER ATTEMPTS TO DIVIDE BY 0 - RETURN ERROR MESSAGE TO ALERT
       return 'Beep Boop - Sorry, I Cannot Divide by Zero.';

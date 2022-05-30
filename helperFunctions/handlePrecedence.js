@@ -1,21 +1,34 @@
 const findNums = require('./findNums.js').nums;
 const checkError = require('./errorHandler.js').error;
+const controlInput = require('./controlInput.js').check;
 
 module.exports = {
   solve: (str, callback) => {
-    let solution;
+    let solution = 'Beep Boop - Sorry, I Cannot Compute That Expression.';
     let dissect = async (s) => {
+
+      //====CHECK USER INPUT FOR PROPERLY FORMATTED EQUATION--//
+      // controlInput(s, (err, res) => {
+      //   if (err) {
+      //     solution = err;
+      //   } else {
+      //     solution = res;
+      //   }
+      //   // return;
+      // })
+
+      //=====BASES CASE FOR RECURSION - EQUATION SOLVED=====//
+      if (Number(s)) { //IF NUMBER(S) EVALUATES TO TRUE, EQUATION HAS BEEN SOLVED - REMOVE FROM CALLSTACK
+        solution = s;
+        return;
+      }
+
       //=============ERROR HANDLING===========//
       if (checkError(s)) {
         solution = checkError(s);
         return;
       }
 
-      //=====BASES CASE FOR RECURSION - EQUATION SOLVED=====//
-      if (Number(s)) { //IF NUMBER(S) EVALUATES TO TRUE, WE KNOW EQUATION HAS BEEN SOLVED - REMOVE FROM CALLSTACK
-        solution = s;
-        return;
-      }
       //=====PRIORITY - HANDLE PAREN AREA=====//
       let firstHalf;
       let secHalf;
@@ -39,7 +52,7 @@ module.exports = {
             let parenSec = s.slice(openParen + 1, i); //STORE AREA INSIDE OF PARENS
             firstHalf = s.slice(0, openParen); //STORE FIRST HALF OF EQUATION UP TO OPEN PAREN
             secHalf = s.slice(i + 1); //STORE SECOND HALF OF EQUATION FROM CLOSING PAREN TO END
-            dissect(parenSec); //SOLVE EQUATION INSIDE PARENS
+            dissect(parenSec); //SOLVE EQUATION INSIDE PARENS, STORE IN SOLUTION
             dissect(firstHalf + solution + secHalf); //CONCAT SOLVED PAREN AREA WITH FIRST AND SECOND HALF OF EQUATION
             break; //NO NEED TO CONTINUE SEARCHING
           }

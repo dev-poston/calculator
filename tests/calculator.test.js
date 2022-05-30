@@ -70,6 +70,12 @@ describe ('example equations', () => {
     });
   });
 
+  it ('should alert users when given unbalanced parens', () => {
+    calculator('((5)+2', (err, data) => {
+      expect(data).toBe('Beep Boop - Sorry, I Cannot Compute That Expression.');
+    });
+  });
+
   it ('should alert users when given an improperly formatted equation', () => {
     calculator('19 + cinnamon', (err, data) => {
       expect(data).toBe('Beep Boop - Sorry, I Cannot Compute That Expression.');

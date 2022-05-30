@@ -44,14 +44,14 @@ class App extends React.Component {
   calculator(e, input) {
     e.preventDefault();
     API.post({input: input}, (err, data) => {
-      if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING!
+      if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING
         alert('Beep Boop - Sorry, I encountered an error. Please Try Again Later.');
       } else { //ALERTS FOR ERROR HANDLING
-        if (typeof data === 'string') {
+        if (typeof data === 'string' && data.length) {
           alert(data);
-        } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY, RESET INPUT
+        } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY
           this.setState({
-            input: '',
+            input: data.toString(),
             solution: data
           });
         }

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import '../styles/styles.css';
 import InputField from './Components/InputField.jsx';
+import alertMsg from '../../helperFunctions/alertMessages.js';
+import controlInput from '../../helperFunctions/controlInput.js';
 import API from './API.js';
 
 class App extends React.Component {
@@ -43,20 +45,26 @@ class App extends React.Component {
   //=====HANDLE THE SUBMISSION OF AN EQUATION=====//
   calculator(e, input) {
     e.preventDefault();
-    API.post({input: input}, (err, data) => {
-      if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING
-        alert('Beep Boop - Sorry, I encountered an error. Please Try Again Later.');
-      } else { //ALERTS FOR ERROR HANDLING
-        if (typeof data === 'string' && data.length) {
-          alert(data);
-        } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY
-          this.setState({
-            input: data.toString(),
-            solution: data
-          });
+    if (Number(input)) {
+      console.log('INPUT TRUE NUM', Number(input))
+      return;
+    } else {
+
+      API.post({input: input}, (err, data) => {
+        if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING
+          alert(alertMsg.serverDown);
+        } else { //ALERTS FOR ERROR HANDLING
+          if (typeof data === 'string' && data.length) {
+            alert(data);
+          } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY
+            this.setState({
+              input: data.toString(),
+              solution: data
+            });
+          }
         }
-      }
-    });
+      });
+    }
   };
 
   render() {

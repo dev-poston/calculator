@@ -1,22 +1,12 @@
 const findNums = require('./findNums.js').nums;
 const checkError = require('./errorHandler.js').error;
-const controlInput = require('./controlInput.js').check;
+const alertMsg = require('./alertMessages.js');
+// const controlInput = require('./controlInput.js').check;
 
 module.exports = {
   solve: (str, callback) => {
-    let solution = 'Beep Boop - Sorry, I Cannot Compute That Expression.';
+    let solution = alertMsg.cantCompute;
     let dissect = async (s) => {
-
-      //====CHECK USER INPUT FOR PROPERLY FORMATTED EQUATION--//
-      // controlInput(s, (err, res) => {
-      //   if (err) {
-      //     solution = err;
-      //   } else {
-      //     solution = res;
-      //   }
-      //   // return;
-      // })
-
       //=====BASES CASE FOR RECURSION - EQUATION SOLVED=====//
       if (Number(s)) { //IF NUMBER(S) EVALUATES TO TRUE, EQUATION HAS BEEN SOLVED - REMOVE FROM CALLSTACK
         solution = s;
@@ -79,6 +69,7 @@ module.exports = {
         }
       };
     };
+
     dissect(str);
     callback(solution); //RETURN SOLUTION
   }

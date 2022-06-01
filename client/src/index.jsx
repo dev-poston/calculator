@@ -45,26 +45,20 @@ class App extends React.Component {
   //=====HANDLE THE SUBMISSION OF AN EQUATION=====//
   calculator(e, input) {
     e.preventDefault();
-    if (Number(input)) {
-      console.log('INPUT TRUE NUM', Number(input))
-      return;
-    } else {
-
-      API.post({input: input}, (err, data) => {
-        if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING
-          alert(alertMsg.serverDown);
-        } else { //ALERTS FOR ERROR HANDLING
-          if (typeof data === 'string' && data.length) {
-            alert(data);
-          } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY
-            this.setState({
-              input: data.toString(),
-              solution: data
-            });
-          }
+    API.post({input: input}, (err, data) => {
+      if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING
+        alert(alertMsg.serverDown);
+      } else { //ALERTS FOR ERROR HANDLING
+        if (typeof data === 'string' && data.length) {
+          alert(data);
+        } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY
+          this.setState({
+            input: data.toString(),
+            solution: data
+          });
         }
-      });
-    }
+      }
+    });
   };
 
   render() {

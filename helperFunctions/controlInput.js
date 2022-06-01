@@ -1,5 +1,5 @@
 const alertMsg = require('./alertMessages.js');
-
+//NOT IN USE//
 module.exports = {
   check: (input, callback) => {
     input = input.replace(/\s/g, ''); //SANITIZE STRING - REMOVE WHITESPACE

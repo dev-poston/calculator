@@ -32,7 +32,6 @@ module.exports = {
       }
       firstNum.unshift(string[j]); // ELSE ADD ITEM TO FIRST NUMBER
     }
-
     if (firstNum[0] === '.') { // HANDLING IMPROPERLY FORMATTED FLOAT INT
       j++
     };

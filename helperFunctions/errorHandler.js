@@ -2,7 +2,7 @@ const alertMsg = require('./alertMessages.js');
 
 module.exports ={
   error: (input, callback) => {
-    if(input === '0' || !input.length) { //IF INPUT IS EMPTY OR IF EQUATION = 0 - RETURN STRING TO ALERT
+    if(input === '0' || !input.length) { //IF INPUT IS EMPTY - RETURN STRING TO ALERT
       return '0';
     }
     if (input.includes('/0') && !input.includes('/0.')) { //IF USER ATTEMPTS TO DIVIDE BY 0 - RETURN ERROR MESSAGE TO ALERT

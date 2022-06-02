@@ -49,7 +49,7 @@ class App extends React.Component {
       if (err) { //API CALL ERROR - SERVER IS NOT RESPONDING
         alert(alertMsg.serverDown);
       } else { //ALERTS FOR ERROR HANDLING
-        if (typeof data === 'string' && data.length) {
+        if (isNaN(data)) {
           alert(data);
         } else { //SET STATE WITH RESULT OF CALCULATOR TO DISPLAY
           this.setState({
